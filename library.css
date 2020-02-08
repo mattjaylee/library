@@ -9,6 +9,14 @@
   padding: 10px;
 }
 
+.title {
+  border-radius: 10px 0px 0px 10px;
+}
+
+.completed {
+  border-radius: 0px 10px 10px 0px;
+}
+
 .book > div{
   border: 1px solid #000;
   padding: 5px;
@@ -17,8 +25,12 @@
 .add {
   float: right;
   margin: 10px;
+  width: 86px;
+  line-height: 10px;
 }
 
-.remove {
-  float: right;
+.removeButton {
+  float: left;
+  float: top;
+  border-radius: 10px;
 }

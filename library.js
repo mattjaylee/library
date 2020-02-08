@@ -26,29 +26,43 @@ function addBookToLibrary(title, author, pages, completed){
     let bookInfo = document.createElement('div');
     bookInfo.classList.add(info);
     bookInfo.textContent = book[info];
+    if (bookInfo.classList == 'title'){
+      let removeButton = document.createElement('button')
+      removeButton.classList.add('removeButton')
+      removeButton.setAttribute('type', 'button');
+      removeButton.textContent = 'x';
+      removeButton.addEventListener('click', removeBook)
+      bookInfo.appendChild(removeButton)
+    }
+    if (bookInfo.classList == 'completed'){
+      bookInfo.addEventListener('click', toggle)
+    }
     libraryBook.appendChild(bookInfo);
   }
-  //adds the remove button book
-  let removeButton = document.createElement('button')
-  removeButton.classList.add('removeButton')
-  removeButton.setAttribute('type', 'button');
-  removeButton.textContent = 'Remove Book';
-  removeButton.addEventListener('click', removeBook)
-  libraryBook.appendChild(removeButton)
   library.appendChild(libraryBook)
+}
+
+function toggle(){
+  let toggle = this.classList.toggle('completedBoolean')
+  if (toggle){
+    this.textContent = 'True'
+  }
+  else {
+    this.textContent = 'False'
+  }
 }
 
 //goes to the parent of the button and removes from DOM and matches it to
 //the array to remove the object from the array as well
 function removeBook(){
-  let removalElement = this.parentNode.querySelector('.title')
+  let removalElement = this.parentNode.parentNode.querySelector('.title')
   for (let i = 0; i < myLibrary.length; i++){
     if (removalElement.textContent == myLibrary[i].title){
       myLibrary.splice(i, 1)
       console.log(myLibrary)
     }
   }
-  this.parentNode.parentNode.removeChild(this.parentNode)
+  this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
 }
 
 //capitalizes the first letter in a string it's called on
