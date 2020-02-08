@@ -22,11 +22,13 @@ function addBookToLibrary(title, author, pages, completed){
   let libraryBook = document.createElement('div');
   libraryBook.classList.add('book','contentGrid')
   let book = myLibrary[myLibrary.length - 1];
+  //loops through the book object to create each div
   for (const info in book){
     let bookInfo = document.createElement('div');
     bookInfo.classList.add(info);
     bookInfo.textContent = book[info];
     if (bookInfo.classList == 'title'){
+      //adds remove button to the title div
       let removeButton = document.createElement('button')
       removeButton.classList.add('removeButton')
       removeButton.setAttribute('type', 'button');
@@ -42,6 +44,7 @@ function addBookToLibrary(title, author, pages, completed){
   library.appendChild(libraryBook)
 }
 
+//toggles between true and false for completed
 function toggle(){
   let toggle = this.classList.toggle('completedBoolean')
   if (toggle){
